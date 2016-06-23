@@ -113,4 +113,5 @@ systemctl start lufi.service
 systemctl restart nginx
 
 echo -e "\n\n${magenta} --- FIN DU SCRIPT (v${VERSION})---\n${rescolor}"
+echo -e "Merci d'éditer le contact par défaut dans \n $WWW/lufi/lufi.conf"
 exit 0
