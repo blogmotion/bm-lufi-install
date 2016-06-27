@@ -62,9 +62,15 @@ server {
 
     # Adapt this to your domain!
     server_name _;
+	
+	# nginx root
+	root /var/www/html/lufi/;
 
     access_log /var/log/nginx/lufi.success.log;
     error_log /var/log/nginx/lufi.error.log;
+	
+	# taille maxiumum upload
+	client_max_body_size 10G;
 
     location / {
         # Add cache for static files
