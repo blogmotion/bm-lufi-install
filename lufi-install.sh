@@ -6,7 +6,7 @@
 # License : Creative Commons http://creativecommons.org/licenses/by-nd/4.0/deed.fr
 # Website : http://blogmotion.fr 
 #set -xe
-VERSION="2016.06.23"
+VERSION="2016.06.27"
 
 # VARIABLES
 WWW="/var/www/html"
@@ -63,8 +63,8 @@ server {
     # Adapt this to your domain!
     server_name _;
 	
-	# nginx root
-	root /var/www/html/lufi/;
+    # nginx root
+    root /var/www/html/lufi/;
 
     access_log /var/log/nginx/lufi.success.log;
     error_log /var/log/nginx/lufi.error.log;
