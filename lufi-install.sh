@@ -27,6 +27,7 @@ echo -e "#            Script d'installation de Lufi              #"
 echo -e "#              Testé sur Debian 8.5 x64                 #"
 echo -e "#                                                       #"
 echo -e "#########################################################"
+echo -e "                     $VERSION"
 echo -e "$rescolor\n\n"
 
 if [ "$UID" -ne "0" ]
@@ -69,8 +70,8 @@ server {
     access_log /var/log/nginx/lufi.success.log;
     error_log /var/log/nginx/lufi.error.log;
 	
-	# taille maxiumum upload
-	client_max_body_size 10G;
+    # taille maxiumum upload
+    client_max_body_size 10G;
 
     location / {
         # Add cache for static files
