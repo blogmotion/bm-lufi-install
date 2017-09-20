@@ -37,7 +37,7 @@ then
 fi
 
 echo -e "\n${jaune}Installation des dependances...${rescolor}"
-apt-get install -y build-essential nginx git
+apt-get install -y build-essential nginx git libpq-dev
 cd $WWW
 
 echo -e "\n${jaune}Git clone...${rescolor}" && sleep 1
