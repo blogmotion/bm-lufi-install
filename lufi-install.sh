@@ -24,11 +24,12 @@ echo -e "$vert"
 echo -e "#########################################################"
 echo -e "#                                                       #"
 echo -e "#            Script d'installation de Lufi              #"
-echo -e "#              Testé sur Debian 8.5 x64                 #"
+echo -e "#              Testé sur Debian 8.5/9.5 x64             #"
 echo -e "#                                                       #"
 echo -e "#########################################################"
 echo -e "                     $VERSION"
 echo -e "$rescolor\n\n"
+sleep 3
 
 if [ "$UID" -ne "0" ]
 then
