@@ -1,12 +1,14 @@
 #!/bin/bash
-# lufi-install : installation de LUFI 
-# Lufi : https://git.framasoft.org/luc/lufi de @framasky
-#
-# Author: Mr Xhark -> @xhark
+# lufi-install : installation de LUFI en moteur SQLite
 # License : Creative Commons http://creativecommons.org/licenses/by-nd/4.0/deed.fr
 # Website : http://blogmotion.fr 
+#
+# LUFI : https://git.framasoft.org/fiat-tux/hat-softwares/lufi 
+#        https://framapiaf.org/@framasky
+#		 https://fiat-tux.fr/2018/10/30/lufi-0-03-est-sorti/
+#
 #set -xe
-VERSION="2016.06.27"
+VERSION="2018.10.31"
 
 # VARIABLES
 WWW="/var/www/html"
@@ -23,8 +25,11 @@ rescolor="\033[0m"
 echo -e "$vert"
 echo -e "#########################################################"
 echo -e "#                                                       #"
-echo -e "#            Script d'installation de Lufi              #"
-echo -e "#              Testé sur Debian 8.5/9.5 x64             #"
+echo -e "#          Script d'installation de LUFI 0.03           #"
+echo -e "#                avec le moteur SQLite                  #"
+echo -e "#                                                       #"
+echo -e "#              Testé sur Debian 9.5 x64                 #"
+echo -e "#                      by @xhark                        #"
 echo -e "#                                                       #"
 echo -e "#########################################################"
 echo -e "                     $VERSION"
@@ -42,22 +47,23 @@ apt-get install -y build-essential nginx git libpq-dev libssl-dev
 cd $WWW
 
 echo -e "\n${jaune}Git clone...${rescolor}" && sleep 1
-git clone https://git.framasoft.org/luc/lufi.git
+git clone https://framagit.org/fiat-tux/hat-softwares/lufi.git
 
 echo -e "\n${jaune}cpan Carton...${rescolor}" && sleep 1
 echo "yes" | cpan Carton
 cd lufi 
 
 echo -e "\n${jaune}Carton install...${rescolor}" && sleep 1
-carton install
+carton install --deployment --without=test --without=postgresql --without=mysql
 cp lufi.conf.template lufi.conf
 
-echo -e "${jaune}Configuration du vhost nginx...${rescolor}" && sleep 1
-sed -i 's|var/www/lufi|var/www/html/lufi|' "$WWW/lufi/lufi.conf"
+echo -e "\n${jaune}Configuration lufi.conf...${rescolor}" && sleep 1
 sed -i 's|#proxy|proxy|' "$WWW/lufi/lufi.conf"
 sed -i 's|#contact|contact|' "$WWW/lufi/lufi.conf"
+sed -i 's|#report|report|' "$WWW/lufi/lufi.conf"
+sed -i 's|#max_file_size|max_file_size|' "$WWW/lufi/lufi.conf"
 
-
+echo -e "${jaune}Configuration du vhost nginx...${rescolor}" && sleep 1
 cat << EOF > /etc/nginx/sites-available/lufi
 server {
     listen 80;
@@ -121,5 +127,5 @@ systemctl start lufi.service
 systemctl restart nginx
 
 echo -e "\n\n${magenta} --- FIN DU SCRIPT (v${VERSION})---\n${rescolor}"
-echo -e "Merci d'éditer le contact par défaut dans \n $WWW/lufi/lufi.conf"
+echo -e "Merci les variables 'contact', 'report' et 'secrets' par défaut dans \n $WWW/lufi/lufi.conf"
 exit 0
