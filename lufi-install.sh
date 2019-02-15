@@ -8,7 +8,7 @@
 #		 https://fiat-tux.fr/2018/10/30/lufi-0-03-est-sorti/
 #
 #set -xe
-VERSION="2018.10.31"
+VERSION="2019.02.15"
 
 # VARIABLES
 WWW="/var/www/html"
@@ -127,5 +127,5 @@ systemctl start lufi.service
 systemctl restart nginx
 
 echo -e "\n\n${magenta} --- FIN DU SCRIPT (v${VERSION})---\n${rescolor}"
-echo -e "Merci les variables 'contact', 'report' et 'secrets' par défaut dans \n $WWW/lufi/lufi.conf"
+echo -e "Merci de modifier les variables  par défaut 'contact', 'report' et 'secrets' dans \n $WWW/lufi/lufi.conf"
 exit 0
