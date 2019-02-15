@@ -43,18 +43,18 @@ then
 fi
 
 echo -e "\n${jaune}Installation des dependances...${rescolor}"
-apt-get install -y build-essential nginx git libpq-dev libssl-dev
+apt-get install -y build-essential nginx git libssl-dev cpanminus
 cd $WWW
 
 echo -e "\n${jaune}Git clone...${rescolor}" && sleep 1
 git clone https://framagit.org/fiat-tux/hat-softwares/lufi.git
 
 echo -e "\n${jaune}cpan Carton...${rescolor}" && sleep 1
-echo "yes" | cpan Carton
+cpanm Carton
 cd lufi 
 
 echo -e "\n${jaune}Carton install...${rescolor}" && sleep 1
-carton install --deployment --without=test --without=postgresql --without=mysql
+carton install --deployment --without=test --without=postgresql --without=mysql --without=ldap --without=htpasswd
 cp lufi.conf.template lufi.conf
 
 echo -e "\n${jaune}Configuration lufi.conf...${rescolor}" && sleep 1
