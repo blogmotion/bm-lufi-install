@@ -72,7 +72,7 @@ server {
     server_name _;
 	
     # nginx root
-    root /var/www/html/lufi/;
+    root ${WWW}/lufi/;
 
     access_log /var/log/nginx/lufi.success.log;
     error_log /var/log/nginx/lufi.error.log;
@@ -120,7 +120,7 @@ chown -R www-data:www-data $WWW/lufi
 
 echo -e "\n${jaune}Config et restart des services...${rescolor}" && sleep 1
 cp utilities/lufi.service /etc/systemd/system
-sed -i 's|var/www/lufi|var/www/html/lufi|' /etc/systemd/system/lufi.service
+sed -i "s|/var/www/lufi|${WWW}/lufi|" /etc/systemd/system/lufi.service
 systemctl daemon-reload 
 systemctl enable lufi.service
 systemctl start lufi.service
