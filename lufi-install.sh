@@ -8,7 +8,7 @@
 #		 https://fiat-tux.fr/2018/10/30/lufi-0-03-est-sorti/
 #
 #set -xe
-VERSION="2019.02.15"
+VERSION="2019.08.21"
 
 # VARIABLES
 WWW="/var/www/html"
@@ -25,10 +25,10 @@ rescolor="\033[0m"
 echo -e "$vert"
 echo -e "#########################################################"
 echo -e "#                                                       #"
-echo -e "#          Script d'installation de LUFI 0.03           #"
+echo -e "#          Script d'installation de LUFI 0.04.2         #"
 echo -e "#                avec le moteur SQLite                  #"
 echo -e "#                                                       #"
-echo -e "#              Testé sur Debian 9.5 x64                 #"
+echo -e "#              Testé sur Debian 9/10 (x64)              #"
 echo -e "#                      by @xhark                        #"
 echo -e "#                                                       #"
 echo -e "#########################################################"
@@ -127,5 +127,5 @@ systemctl start lufi.service
 systemctl restart nginx
 
 echo -e "\n\n${magenta} --- FIN DU SCRIPT (v${VERSION})---\n${rescolor}"
-echo -e "Merci de modifier les variables  par défaut 'contact', 'report' et 'secrets' dans \n $WWW/lufi/lufi.conf"
+echo -e "\n${rouge}Merci de modifier les variables  par défaut 'contact', 'report' et 'secrets' dans \n $WWW/lufi/lufi.conf ${rescolor}\n"
 exit 0

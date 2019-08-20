@@ -8,6 +8,7 @@ Ce script automatise l'installation de Lufi (https://framagit.org/luc/lufi), uni
 
 Validé sur :
 
+- Debian 10.0 x64 (netinstall)
 - Debian 9.5 x64 (netinstall)
 - Debian 8.5 x64 (netinstall)
 - Connexion internet directe (sans proxy)
@@ -22,6 +23,7 @@ This script automates the installation of Lufi (https://framagit.org/luc/lufi), 
 
 Tested on :
 
+- Debian 10.0 x64 (netinstall)
 - Debian 9.5 x64 (netinstall)
 - Debian 8.5 x64 (netinstall)
 - Direct internet connection (no proxy)
